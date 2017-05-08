@@ -543,7 +543,7 @@ class EntityReference_SelectionHandler_Generic_taxonomy_term extends EntityRefer
 
     foreach ($bundles as $bundle) {
       if ($vocabulary = taxonomy_vocabulary_machine_name_load($bundle)) {
-        if ($terms = taxonomy_get_tree($vocabulary->vid, 0, NULL, TRUE)) {
+        if ($terms = taxonomy_get_tree($vocabulary->machine_name, 0, NULL, TRUE)) {
           foreach ($terms as $term) {
             $options[$vocabulary->machine_name][$term->tid] = str_repeat('-', $term->depth) . check_plain(entity_label('taxonomy_term', $term));
           }
@@ -560,4 +560,3 @@ class EntityReference_SelectionHandler_Generic_taxonomy_term extends EntityRefer
  * Exception thrown when the entity view renderer goes into a potentially infinite loop.
  */
 class EntityReferenceRecursiveRenderingException extends Exception {}
-
